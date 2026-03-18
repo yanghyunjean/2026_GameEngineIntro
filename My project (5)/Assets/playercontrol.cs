@@ -41,6 +41,23 @@ public class playercontrol : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
+
+        if(moveinput.magnitude > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if(moveinput.x  < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        if(moveinput.magnitude > 0 ) {
+            myAnimator.SetBool("move", true);
+        }
+        else
+        {
+            myAnimator.SetBool("move", false);
+        }
         transform.Translate(Vector3.right * moveSpeed * moveinput.x * Time.deltaTime);
     }
 }

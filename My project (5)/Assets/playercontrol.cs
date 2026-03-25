@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+
 
 public class playercontrol : MonoBehaviour
 {
@@ -28,36 +31,56 @@ public class playercontrol : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
- 
 
-    // Update is called once per frame
-    void Update()
+private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (moveinput.x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (moveinput.x < 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+        SceneManager.LoadScene("PlayScene_" + collision.name);
 
-        if(moveinput.magnitude > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if(moveinput.x  < 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
 
-        if(moveinput.magnitude > 0 ) {
-            myAnimator.SetBool("move", true);
+        if (collision.name == "Death")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
+
         {
-            myAnimator.SetBool("move", false);
+            SceneManager.LoadScene("PlayScene_" + collision.name);
         }
-        transform.Translate(Vector3.right * moveSpeed * moveinput.x * Time.deltaTime);
     }
-}
+
+ 
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (moveinput.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (moveinput.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            if (moveinput.magnitude > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (moveinput.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            if (moveinput.magnitude > 0)
+            {
+                myAnimator.SetBool("move", true);
+            }
+            else
+            {
+                myAnimator.SetBool("move", false);
+            }
+            transform.Translate(Vector3.right * moveSpeed * moveinput.x * Time.deltaTime);
+        }
+    
+    }
+

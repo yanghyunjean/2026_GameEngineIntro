@@ -821,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c42caac911b040409dd8b739f1d2feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  player: {fileID: 2029098273}
 --- !u!1 &530832180
 GameObject:
   m_ObjectHideFlags: 0

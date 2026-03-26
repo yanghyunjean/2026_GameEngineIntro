@@ -6,7 +6,7 @@ public class TitleManager : MonoBehaviour
     public GameObject helpPanel;
     public void GameStart()
     {
-        SceneManager.LoadScene("PlayScene_Dodr1");
+        SceneManager.LoadScene("PlayScene_Door1");
     }
     public void OpenHelp()
     {
